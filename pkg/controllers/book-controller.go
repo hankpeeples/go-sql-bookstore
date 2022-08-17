@@ -12,7 +12,7 @@ import (
 	"github.com/hankpeeples/sql-bookstore/pkg/utils"
 )
 
-func GetBook(w http.ResponseWriter) {
+func GetBook(w http.ResponseWriter, r *http.Request) {
 	newBooks := models.GetAllBooks()
 
 	res, _ := json.Marshal(newBooks)
