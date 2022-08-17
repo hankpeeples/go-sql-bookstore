@@ -19,7 +19,10 @@ func GetBook(w http.ResponseWriter, r *http.Request) {
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
-	log.Fatal(w.Write(res))
+	_, err := w.Write(res)
+	if err != nil {
+		log.Println("Error in 'GetBook()':\n", err)
+	}
 }
 
 func GetBookById(w http.ResponseWriter, r *http.Request) {
@@ -36,7 +39,10 @@ func GetBookById(w http.ResponseWriter, r *http.Request) {
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
-	log.Fatal(w.Write(res))
+	_, err = w.Write(res)
+	if err != nil {
+		log.Println("Error in 'GetBookById()':\n", err)
+	}
 }
 
 func CreateBook(w http.ResponseWriter, r *http.Request) {
@@ -47,7 +53,10 @@ func CreateBook(w http.ResponseWriter, r *http.Request) {
 	res, _ := json.Marshal(b)
 
 	w.WriteHeader(http.StatusOK)
-	log.Fatal(w.Write(res))
+	_, err := w.Write(res)
+	if err != nil {
+		log.Println("Error in 'CreateBook()':\n", err)
+	}
 }
 
 func DeleteBook(w http.ResponseWriter, r *http.Request) {
@@ -64,7 +73,10 @@ func DeleteBook(w http.ResponseWriter, r *http.Request) {
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
-	log.Fatal(w.Write(res))
+	_, err = w.Write(res)
+	if err != nil {
+		log.Println("Error in 'DeleteBook()':\n", err)
+	}
 }
 
 func UpdateBook(w http.ResponseWriter, r *http.Request) {
@@ -94,5 +106,8 @@ func UpdateBook(w http.ResponseWriter, r *http.Request) {
 	res, _ := json.Marshal(bookDetails)
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
-	log.Fatal(w.Write(res))
+	_, err = w.Write(res)
+	if err != nil {
+		log.Println("Error in 'UpdateBook()':\n", err)
+	}
 }

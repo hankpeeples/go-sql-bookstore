@@ -15,5 +15,8 @@ func main() {
 	routes.RegisterBookstoreRoutes(r)
 	http.Handle("/", r)
 	fmt.Print("Server running on port :3080\n")
-	log.Fatal(http.ListenAndServe("localhost:3080", r))
+	err := http.ListenAndServe("localhost:3080", r)
+	if err != nil {
+		log.Fatal("Server crashed: \n", err.Error())
+	}
 }
